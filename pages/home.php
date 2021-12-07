@@ -2,7 +2,7 @@
     ob_start();
     session_start();
     require_once("../inc/header.php");
-    print_r($_SESSION);
+
 ?>
 <div class="wrapper d-flex align-items-stretch">
     <nav id="sidebar">

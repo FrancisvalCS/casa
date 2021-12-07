@@ -1,5 +1,6 @@
 <?php
     require_once("dts/configs.php");
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
