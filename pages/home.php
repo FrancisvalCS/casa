@@ -1,7 +1,10 @@
 <?php
     ob_start();
     session_start();
+    require_once("../dts/configs.php");
     require_once("../inc/header.php");
+
+    $readLevel = read($conect,'usuario',"WHERE level = 1"); //modificar conforme valor do formulário de cadastro
 
 ?>
 <div class="wrapper d-flex align-items-stretch">
@@ -49,18 +52,27 @@
                 <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                    <i class="fa fa-bars"></i>
                </button>
-
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="nav navbar-nav ml-auto">
-                       <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
-                       <li class="nav-item"><a class="nav-link" href="#">Info</a></li>
-                       <li class="nav-item"><a class="nav-link" href="#">Inserir</a></li>
-                       <li class="nav-item"><a class="nav-link" href="#">Cadastrar</a></li>
-                       <li class="nav-item"><a class="nav-link" href="../switch/logout.php">Sair</a></li>
-                      <!--<li class="nav-item"><a class="nav-link" href="#">Portfolio</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>-->
-                   </ul>
-               </div>
+                <?php
+                    if($readLevel):
+                        echo '<div class="collapse navbar-collapse" id="navbarSupportedContent">';
+                            echo '<ul class="nav navbar-nav ml-auto">';
+                                echo '<li class="nav-item active"><a class="nav-link" href="#">Home</a></li>';
+                                echo '<li class="nav-item"><a class="nav-link" href="#">Info</a></li>';
+                                echo '<li class="nav-item"><a class="nav-link" href="#">Inserir</a></li>';
+                                echo '<li class="nav-item"><a class="nav-link" href="#">Cadastrar</a></li>';
+                                echo '<li class="nav-item"><a class="nav-link" href="../switch/logout.php">Sair</a></li>';
+                            echo '</ul>';
+                        echo '</div>';
+                    else:
+                        echo '<div class="collapse navbar-collapse" id="navbarSupportedContent">';
+                            echo '<ul class="nav navbar-nav ml-auto">';
+                                echo '<li class="nav-item active"><a class="nav-link" href="#">Home</a></li>';
+                                echo '<li class="nav-item"><a class="nav-link" href="#">Info</a></li>';
+                                echo '<li class="nav-item"><a class="nav-link" href="../switch/logout.php">Sair</a></li>';
+                            echo '</ul>';
+                        echo '</div>';
+                    endif;
+                ?>
             </div>
         </nav>
 
